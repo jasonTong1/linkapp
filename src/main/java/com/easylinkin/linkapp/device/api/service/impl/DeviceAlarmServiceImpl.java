@@ -8,6 +8,7 @@ import com.easylinkin.linkapp.device.api.dao.DeviceAlarmMapper;
 import com.easylinkin.linkapp.device.api.entity.DeviceAlarm;
 import com.easylinkin.linkapp.device.api.service.DeviceAlarmService;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -38,17 +39,17 @@ public class DeviceAlarmServiceImpl extends ServiceImpl<DeviceAlarmMapper, Devic
     }
 
     @Override
-    public List<DeviceAlarm> getDeviceAlarm() {
+    public List<DeviceAlarm> getDeviceAlarm(DeviceAlarm deviceAlarm) {
         QueryWrapper<DeviceAlarm> qw = new QueryWrapper();
-        qw.like("name", "aa");
-        qw.eq("type", 1);
+        qw.eq("name", deviceAlarm.getName());
+        qw.eq("type", deviceAlarm.getType());
         return baseMapper.selectList(qw);
     }
 
     @Override
     public IPage<DeviceAlarm> getDeviceAlarm(Page<DeviceAlarm> page, DeviceAlarm deviceAlarm) {
         QueryWrapper<DeviceAlarm> qw = new QueryWrapper();
-        qw.like("name", "aa");
+        qw.like("name", "a");
         qw.eq("type", 1);
         return baseMapper.selectPage(page, qw);
     }

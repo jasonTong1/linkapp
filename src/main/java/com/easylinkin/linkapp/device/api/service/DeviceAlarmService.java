@@ -22,7 +22,8 @@ public interface DeviceAlarmService extends IService<DeviceAlarm> {
 
     Page<DeviceAlarm> selectDeviceAlarm(Page<DeviceAlarm> page, DeviceAlarm deviceAlarm);
 
-    List<DeviceAlarm> getDeviceAlarm();
+
+    List<DeviceAlarm> getDeviceAlarm(DeviceAlarm deviceAlarm);
 
     /**
      * 分页查询

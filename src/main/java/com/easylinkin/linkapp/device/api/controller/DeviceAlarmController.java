@@ -30,13 +30,18 @@ public class DeviceAlarmController {
     DeviceAlarmService deviceAlarmService;
 
     @GetMapping("/getDeviceAlarm")
-    public List<DeviceAlarm> getDeviceAlarm() {
-        return deviceAlarmService.getDeviceAlarm();
+    public List<DeviceAlarm> getDeviceAlarm(@RequestParam("json") String json) {
+        JSONObject jsonObject = JSON.parseObject(json);
+        DeviceAlarm deviceAlarm = jsonObject
+            .getObject("customQueryParams", DeviceAlarm.class);
+        Page<DeviceAlarm> page = jsonObject.getObject("page", Page.class);
+        Assert.notNull(deviceAlarm, "customQueryParams 不能为空");
+        return deviceAlarmService.getDeviceAlarm(deviceAlarm);
 
     }
 
     @GetMapping("/getDeviceAlarmPage")
-    public IPage<DeviceAlarm> getDeviceAlarm(@RequestParam("json") String json) {
+    public IPage<DeviceAlarm> getDeviceAlarmPage(@RequestParam("json") String json) {
 
         JSONObject jsonObject = JSON.parseObject(json);
         DeviceAlarm deviceAlarm = jsonObject
@@ -61,6 +66,7 @@ public class DeviceAlarmController {
         JSONObject jsonObject = JSON.parseObject(json);
         DeviceAlarm deviceAlarm = jsonObject
             .getObject("customQueryParams", DeviceAlarm.class);
+        Assert.notNull(deviceAlarm, "customQueryParams 不能为空");
         return deviceAlarmService.selectDeviceAlarm(deviceAlarm);
     }
 
