@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.easylinkin.linkapp.device.api.dao.DeviceAlarmMapper">
+
+  <select id="getDeviceAlarmPage" resultType="com.easylinkin.linkapp.device.api.entity.DeviceAlarm">
+    SELECT id,name ,type  FROM device_name
+  </select>
+
+</mapper>
