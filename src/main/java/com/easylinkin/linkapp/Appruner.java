@@ -10,7 +10,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-@MapperScan({"com.easylinkin.linkapp.**.dao*"})
+@MapperScan(basePackages = {"com.easylinkin.linkapp.**.dao"})
 @SpringBootApplication(exclude = DruidDataSourceAutoConfigure.class)
 
 @ServletComponentScan

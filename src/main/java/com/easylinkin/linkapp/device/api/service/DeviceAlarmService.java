@@ -15,4 +15,6 @@ public interface DeviceAlarmService extends IService<DeviceAlarm> {
     boolean addDeviceAlarm(DeviceAlarm deviceAlarm);
 
     List<DeviceAlarm> getDeviceAlarmPage();
+
+    List<DeviceAlarm> getDeviceAlarm();
 }

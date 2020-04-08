@@ -1,8 +1,8 @@
 package com.easylinkin.linkapp.device.api.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import org.hibernate.validator.constraints.Length;
@@ -16,7 +16,10 @@ import org.hibernate.validator.constraints.Length;
 @TableName("device_name")
 public class DeviceAlarm extends Model<DeviceAlarm> {
 
-    @TableId("id")
+    private static final long serialVersionUID = 1L;
+
+//    @TableId(type = IdType.ID_WORKER_STR)
+    @TableId
     @Length(max = 32, message = "id 超长")
     private String id;
 
@@ -53,5 +56,9 @@ public class DeviceAlarm extends Model<DeviceAlarm> {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 }
