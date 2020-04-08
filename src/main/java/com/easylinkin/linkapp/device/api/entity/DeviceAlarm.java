@@ -18,7 +18,7 @@ public class DeviceAlarm extends Model<DeviceAlarm> {
 
     private static final long serialVersionUID = 1L;
 
-//    @TableId(type = IdType.ID_WORKER_STR)
+    //    @TableId(type = IdType.ID_WORKER_STR)
     @TableId
     @Length(max = 32, message = "id 超长")
     private String id;

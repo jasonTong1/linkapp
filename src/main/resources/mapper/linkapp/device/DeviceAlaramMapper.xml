@@ -4,8 +4,15 @@
 
 <mapper namespace="com.easylinkin.linkapp.device.api.dao.DeviceAlarmMapper">
 
-  <select id="getDeviceAlarmPage" resultType="com.easylinkin.linkapp.device.api.entity.DeviceAlarm">
-    SELECT id,name ,type  FROM device_name
+  <select id="selectDeviceAlarm" resultType="com.easylinkin.linkapp.device.api.entity.DeviceAlarm">
+    SELECT id,name ,type FROM device_name
+    where 1=1
+    <if test="entity.name!=null and entity.name!=''">
+      and name =#{entity.name}
+    </if>
+    <if test="entity.type!=null and entity.type!=''">
+      and type =${entity.type}
+    </if>
   </select>
 
 </mapper>

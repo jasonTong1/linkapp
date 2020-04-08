@@ -54,4 +54,5 @@ public class MyBatisPlusConfig {
         return new LogicSqlInjector();
     }
 
+
 }

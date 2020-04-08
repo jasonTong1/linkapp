@@ -20,3 +20,8 @@ mybatis-plus:
   sql-injector: com.baomidou.mybatisplus.extension.injector.LogicSqlInjector
   mapper-locations: classpath:/mapper/**/*.xml
 
+mybatis:
+  configuration:
+    #mybatis-log plugin插件日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
