@@ -8,7 +8,8 @@ import com.easylinkin.linkapp.device.api.dao.DeviceAlarmMapper;
 import com.easylinkin.linkapp.device.api.entity.DeviceAlarm;
 import com.easylinkin.linkapp.device.api.service.DeviceAlarmService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,6 +20,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DeviceAlarmServiceImpl extends ServiceImpl<DeviceAlarmMapper, DeviceAlarm> implements DeviceAlarmService {
+
+    static final Logger LOGGER = LoggerFactory.getLogger(DeviceAlarmServiceImpl.class);
 
     @Override
     public boolean addDeviceAlarm(DeviceAlarm deviceAlarm) {
@@ -41,7 +44,7 @@ public class DeviceAlarmServiceImpl extends ServiceImpl<DeviceAlarmMapper, Devic
     @Override
     public List<DeviceAlarm> getDeviceAlarm(DeviceAlarm deviceAlarm) {
         QueryWrapper<DeviceAlarm> qw = new QueryWrapper();
-        qw.eq("name", deviceAlarm.getName());
+        qw.likeLeft("name", deviceAlarm.getName());
         qw.eq("type", deviceAlarm.getType());
         return baseMapper.selectList(qw);
     }
@@ -49,8 +52,8 @@ public class DeviceAlarmServiceImpl extends ServiceImpl<DeviceAlarmMapper, Devic
     @Override
     public IPage<DeviceAlarm> getDeviceAlarm(Page<DeviceAlarm> page, DeviceAlarm deviceAlarm) {
         QueryWrapper<DeviceAlarm> qw = new QueryWrapper();
-        qw.like("name", "a");
-        qw.eq("type", 1);
+        qw.likeLeft("name", deviceAlarm.getName());
+        qw.eq("type", deviceAlarm.getType());
         return baseMapper.selectPage(page, qw);
     }
 
